@@ -17,3 +17,10 @@ docker-compose up
 ```
 
 Show page: http://localhost:3000/
+
+
+## Add modules
+
+```sh
+docker-compose run -w /usr/app --rm app yarn add @mui/material @emotion/react @emotion/styled
+```
