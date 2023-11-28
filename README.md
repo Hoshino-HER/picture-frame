@@ -11,6 +11,7 @@ Create container:
 mkdir src
 docker-compose run --rm app yarn create next-app --ts --eslint --tailwind --use-yarn .
 ```
+Select default values for all questions at the time of creation.
 
 Execute container:
 ```sh
