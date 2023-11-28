@@ -8,7 +8,8 @@ References:
 
 Create container:
 ```sh
-docker-compose run --rm app yarn create next-app .
+mkdir src
+docker-compose run --rm app yarn create next-app --ts --eslint --tailwind --use-yarn .
 ```
 
 Execute container:
