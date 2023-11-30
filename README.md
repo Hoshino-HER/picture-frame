@@ -9,8 +9,14 @@ References:
 Create container:
 ```sh
 mkdir src
-docker-compose run --rm app yarn create next-app --ts --eslint --tailwind --use-yarn .
+docker-compose run --rm app yarn create next-app --ts --eslint --tailwind --use-yarn --src-dir --app  --import-alias "@/*" .
 ```
+  - choice App Router project
+  - use Yarn
+  - use eslint
+  - use Tailwind CSS
+  - use `src/` directory
+  - use default alias
 
 Execute container:
 ```sh
