@@ -2,20 +2,33 @@ version: '3'
 
 services:
   app:
-    build: ./
-    volumes:
-      - ./next-app:/usr/app/picture-frame
-    command: sh -c "yarn dev"
-    ports:
-      - "3000:3000"
+    container_name: picture-frame
+    build:
+      context: ./next-app
+      dockerfile: Dockerfile
 
-  # front:
-  #   build: .
-  #   volumes:
-  #     - .:/myapp
-  #   environment:
-  #     NODE_ENV: development
-  #   ports:
-  #     - 3000:3000
-  #     # 以下追記
-  #     - 9229:9229
+    # # Set environment variables directly in the docker-compose file
+    # environment:
+    #   ENV_VARIABLE: ${ENV_VARIABLE}
+    #   NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+
+    # # Set envrionment variables based on the .env file
+    # env_file:
+    #   - .env
+    volumes:
+      - ./next-app/src:/app/src
+      - ./next-app/public:/app/public
+    restart: always
+    ports:
+      - 3000:3000
+      - 9229:9229
+    networks:
+      - picture-frame
+
+  # Add more containers below (nginx, postgres, etc.)
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  picture-frame:
+    external: true
