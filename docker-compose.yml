@@ -18,6 +18,8 @@ services:
     volumes:
       - ./next-app/src:/app/src
       - ./next-app/public:/app/public
+      - ./next-app/package.json:/app/package.json
+      - ./next-app/yarn.lock:/app/yarn.lock
     restart: always
     ports:
       - 3000:3000
