@@ -38,7 +38,9 @@
 			"extensions": [
 				"mhutchie.git-graph",
 				"GitHub.copilot",
-				"GitHub.copilot-chat"
+				"GitHub.copilot-chat",
+				"streetsidesoftware.code-spell-checker",
+				"shardulm94.trailing-spaces"
 			]
 		}
 	}
