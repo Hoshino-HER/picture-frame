@@ -1,8 +1,19 @@
 # This is Next.js PWA sample project.
 
-References: 
-  - [next.js / examples / with-docker-compose /](https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose)
-  - https://zenn.dev/tns_00/articles/next-pwa-install
+> ### References:
+> - [next.js / examples / with-docker-compose /](https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose)
+> - https://zenn.dev/tns_00/articles/next-pwa-install
+
+## Open Devcontainer in VSC
+
+As a prerequisite, VSC must have the Dev Containers extension.
+
+The first time, execute `Dev Containers: Rebuild and Reopen Container` from the command palette of VSC (e.g. [F1]).
+
+Next time, select `Reopen in Container` from the menu of the remote connection icon under the gear icon or from the command palette.
+
+
+---
 
 ## Build docker image
 
@@ -11,12 +22,12 @@ Build docker image
 docker-compose build
 ```
 
-## Run dev environment
+## Connect to container
 
-Execute container:
-```sh
-docker-compose up
-```
+Open "Remote Explorer" on the left toolbar of the VSC and attach the development container.
+
+
+## Start debug
 
 Show page: http://localhost:3000/
 

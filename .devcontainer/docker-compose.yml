@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  # Update this to the name of the service you want to work with in your docker-compose.yml file
+  next-app:
+    # Uncomment if you want to override the service's Dockerfile to one in the .devcontainer 
+    # folder. Note that the path of the Dockerfile and context is relative to the *primary* 
+    # docker-compose.yml file (the first in the devcontainer.json "dockerComposeFile"
+    # array). The sample below assumes your primary file is in the root of your project.
+    #
+    build:
+      context: ../
+      dockerfile: dev.Dockerfile
+
+    # Set environment variables directly in the docker-compose file
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+
+    # Set envrionment variables based on the .env file
+    env_file:
+      - ../.env
+
+    volumes:
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - ..:/app:cached
+      - node-node_modules:/app/next-app/node_modules
+
+    restart: always
+
+    ports:
+      - 3000:3000
+      # - 9229:9229
+
+    networks:
+      - picture-frame
+
+    # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
+    # cap_add:
+    #   - SYS_PTRACE
+    # security_opt:
+    #   - seccomp:unconfined
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+volumes:
+  node-node_modules:
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  picture-frame:
+    external: true
