@@ -25,6 +25,7 @@ services:
       # Update this to wherever you want VS Code to mount the folder of your project
       - ..:/app:cached
       - node-node_modules:/app/next-app/node_modules
+      - node-next:/app/next-app/.next
 
     restart: always
 
@@ -46,6 +47,7 @@ services:
 
 volumes:
   node-node_modules:
+  node-next:
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
