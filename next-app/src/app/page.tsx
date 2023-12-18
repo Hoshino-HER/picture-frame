@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 
-import ImageMenu from '../components/image_menu';
+import ImageMenu from '../components/ImageMenu';
 import { Box } from '@mui/material';
 
 export default function FullScreenDialog() {
@@ -25,6 +25,6 @@ export default function FullScreenDialog() {
       <Box>
         <ImageMenu />
       </Box>
-    </React.Fragment>
+      </React.Fragment>
   );
 }
