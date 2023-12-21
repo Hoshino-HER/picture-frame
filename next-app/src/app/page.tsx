@@ -3,6 +3,7 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 
 import ImageMenu from '../components/ImageMenu';
+import GooglePicker from '../components/GooglePicker';
 import { Box } from '@mui/material';
 
 export default function FullScreenDialog() {
@@ -23,7 +24,8 @@ export default function FullScreenDialog() {
         />
       </Dialog>
       <Box>
-        <ImageMenu />
+        {/* <ImageMenu /> */}
+        <GooglePicker />
       </Box>
       </React.Fragment>
   );
