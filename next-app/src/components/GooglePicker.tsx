@@ -1,8 +1,14 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import useDrivePicker from 'react-google-drive-picker'
+import { PickerCallback } from 'react-google-drive-picker/dist/typeDefs';
 
+interface GooglePickerProps {
+  onSelect: Dispatch<SetStateAction<string>>;
+}
 
-function GooglePicker() {
+function GooglePicker( { onSelect }: GooglePickerProps ) {
+  const [target, setTarget] = useState('');
   const [openPicker, authResponse] = useDrivePicker();
   // const customViewsArray = [new google.picker.DocsView()]; // custom view
   const handleOpenPicker = () => {
@@ -23,16 +29,27 @@ function GooglePicker() {
       // developerKey = API キー "API キー 1"
       viewId: "DOCS",
       // token: token, // pass oauth token in case you already have one
-      showUploadView: true,
-      showUploadFolders: true,
+      showUploadView: false,
+      showUploadFolders: false,
       supportDrives: true,
       multiselect: true,
+      setIncludeFolders: true,
       // customViews: customViewsArray, // custom view
-      callbackFunction: (data) => {
+      callbackFunction: (data: PickerCallback) => {
         if (data.action === 'cancel') {
           console.log('User clicked cancel/close button')
         }
-        console.log(data)
+        console.log(data);
+        if (data.action === 'picked') {
+          console.log(`User selected ${data.docs.length} files`);
+          if (data.docs.length > 0) {
+            console.log('User selected file:', data.docs[0]);
+            let target = 'https://drive.google.com/uc?export=view&id=' + data.docs[0].id;
+            setTarget(target);
+            onSelect(target);
+            console.log('target url: ' + target);
+          }
+        }
       },
     })
   }
@@ -40,7 +57,14 @@ function GooglePicker() {
 
   return (
     <div>
-      <button onClick={() => handleOpenPicker()}>Open Picker</button>
+      {
+        target ? 
+        <div>
+          <img src={target} alt="target" />
+          {target}
+        </div> : 
+        <button onClick={() => handleOpenPicker()}>Open Picker</button>
+      }
     </div>
   );
 }
