@@ -1,9 +1,8 @@
 "use client";
 import * as React from 'react';
 import { useState } from 'react';
-import Dialog from '@mui/material/Dialog';
 
-import ImageMenu from '../components/ImageMenu';
+import ImageDialog from '../components/ImageDialog';
 import GooglePicker from '../components/GooglePicker';
 import { Box } from '@mui/material';
 
@@ -12,24 +11,16 @@ export default function FullScreenDialog() {
 
   return (
     <React.Fragment>
-      <Dialog
-        fullScreen
+      <ImageDialog
         open={true}
         sx={{ zIndex: -1000 }}
-      >
-        <img
-          alt="Random image"
-          src={target}
-          style={{
-            width: '100%', height: '100%', 
-            objectFit: 'contain', backgroundColor: 'black'
-          }}
-        />
-      </Dialog>
+        urls={[target, target, target]}
+        interval={5000}
+      />
       <Box>
         {/* <ImageMenu /> */}
-        <GooglePicker onSelect={setTarget}/>
+        <GooglePicker onSelect={setTarget} />
       </Box>
-      </React.Fragment>
+    </React.Fragment>
   );
 }
