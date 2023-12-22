@@ -27,13 +27,14 @@ function GooglePicker( { onSelect }: GooglePickerProps ) {
       //   }
       developerKey: "AIzaSyDcSkMPcuDYwYjIyyzieYq27tFwL46PHKY",
       // developerKey = API キー "API キー 1"
-      viewId: "DOCS",
+      viewId: "FOLDERS",
       // token: token, // pass oauth token in case you already have one
       showUploadView: false,
       showUploadFolders: false,
       supportDrives: true,
       multiselect: true,
       setIncludeFolders: true,
+      setSelectFolderEnabled: true,
       // customViews: customViewsArray, // custom view
       callbackFunction: (data: PickerCallback) => {
         if (data.action === 'cancel') {
@@ -41,7 +42,7 @@ function GooglePicker( { onSelect }: GooglePickerProps ) {
         }
         console.log(data);
         if (data.action === 'picked') {
-          console.log(`User selected ${data.docs.length} files`);
+          console.log(`User selected ${data.docs.length} folders`);
           if (data.docs.length > 0) {
             console.log('User selected file:', data.docs[0]);
             let target = 'https://drive.google.com/uc?export=view&id=' + data.docs[0].id;
