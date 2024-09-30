@@ -4,7 +4,7 @@ import useDrivePicker from 'react-google-drive-picker'
 import { PickerCallback } from 'react-google-drive-picker/dist/typeDefs';
 
 interface GooglePickerProps {
-  onSelect: Dispatch<SetStateAction<string>>;
+  onSelect: Dispatch<string>;
 }
 
 function GooglePicker( { onSelect }: GooglePickerProps ) {

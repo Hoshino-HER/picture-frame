@@ -1,0 +1,14 @@
+{
+  "web": {
+    "client_id": "602241902500-8vmlnsdr30uu4poikvpk8ue3kv8tnv54.apps.googleusercontent.com",
+    "project_id": "picture-frame-407807",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "javascript_origins": [
+      "http://localhost:3000",
+      "http://localhost:3001"
+    ]
+  }
+}
